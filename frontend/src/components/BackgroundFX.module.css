@@ -305,7 +305,7 @@
 .tabBar {
   display: flex;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-top: -1rem;
   z-index: 25;
   flex-wrap: wrap;
   justify-content: center;
