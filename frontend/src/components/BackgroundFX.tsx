@@ -420,8 +420,10 @@ class ScreenEffect {
 
 export type BackgroundFXProps = {
   className?: string;
-  /** Overlay content (rendered centered on top of the FX) */
+  /** Overlay content (rendered on top of the FX) */
   children?: React.ReactNode;
+  /** If true, children are centered; otherwise placed in a non-centered overlay */
+  overlayCentered?: boolean;
   /** Toggle certain effects */
   enableSnow?: boolean;
   enableVCR?: boolean;
@@ -433,6 +435,7 @@ export type BackgroundFXProps = {
 export default function BackgroundFX({
   className,
   children,
+  overlayCentered = true,
   enableSnow = true,
   enableVCR = true,
   enableScanlines = true,
@@ -475,7 +478,11 @@ export default function BackgroundFX({
     <div className={className}>
       <div ref={screenRef} className={styles.screen} />
       {children ? (
-        <div className={styles.centerTextWrapper}>{children}</div>
+        overlayCentered ? (
+          <div className={styles.centerTextWrapper}>{children}</div>
+        ) : (
+          <div className={styles.overlay}>{children}</div>
+        )
       ) : null}
     </div>
   );
