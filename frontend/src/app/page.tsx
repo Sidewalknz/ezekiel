@@ -1,95 +1,73 @@
+"use client";
+
 import Image from "next/image";
-import styles from "./page.module.css";
+import BackgroundFX from "../components/BackgroundFX";
+import pageStyles from "./page.module.css";
+import styles from "../components/BackgroundFX.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className={pageStyles.page}>
+      <BackgroundFX
+        className={pageStyles.fxWrapper}
+        enableSnow
+        enableVCR
+        enableScanlines
+        enableVignette
+        enableWobbleY
+      >
+        {/* Title */}
+        <h1 className={`${styles.centerText} ${styles.rgbGlitch}`}>Ezekiel</h1>
 
-        <div className={styles.ctas}>
+        {/* Social icons with RGB glow */}
+        <div className={styles.socialLinks}>
           <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://github.com/EzekielBrown"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              className={styles.rgbGlitchIcon}
+              src="/icons/github.svg"
+              alt="GitHub"
+              width={32}
+              height={32}
+              priority
             />
-            Deploy now
           </a>
           <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://www.linkedin.com/in/ezekiel-brown-a3995a217/"
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.secondary}
+            aria-label="LinkedIn"
           >
-            Read our docs
+            <Image
+              className={styles.rgbGlitchIcon}
+              src="/icons/linkedin.svg"
+              alt="LinkedIn"
+              width={32}
+              height={32}
+              priority
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/zekbrown"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <Image
+              className={styles.rgbGlitchIcon}
+              src="/icons/instagram.svg"
+              alt="Instagram"
+              width={32}
+              height={32}
+              priority
+            />
           </a>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </BackgroundFX>
+    </main>
   );
 }
