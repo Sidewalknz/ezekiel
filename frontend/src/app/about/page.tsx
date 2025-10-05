@@ -177,6 +177,25 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
+                    <div className={fxStyles.panelBody}>
+            <div className={fxStyles.sectionBlock}>
+              <h2>McDonalds</h2>
+              <p className={fxStyles.cardMeta}>2013 – 2018</p>
+              <p>
+                Hired as the purchasing manager, I built supplier relationships and
+                maintained inventory. I quickly took on more—surface-mount
+                technology operation and key responsibilities on the manufacturing
+                side. Also pitched in with web dev where needed.
+              </p>
+              <p className={fxStyles.badgeRow}>
+                <span className={fxStyles.badge}>Inventory Management</span>
+                <span className={fxStyles.badge}>Soldering &amp; Wiring</span>
+                <span className={fxStyles.badge}>Web Development</span>
+                <span className={fxStyles.badge}>Supplier Relations</span>
+                <span className={fxStyles.badge}>SMT Operator</span>
+              </p>
+            </div>
+          </div>
         </section>
       </BackgroundFX>
     </main>
