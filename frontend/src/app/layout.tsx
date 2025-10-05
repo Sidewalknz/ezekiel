@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sidewalk",
-  description: "Sidewalk - Coming Soon",
+  title: "Ezekiel",
+  description: "Ezekiel - Personal Portfolio",
 };
 
 export default function RootLayout({

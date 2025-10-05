@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import BackgroundFX from "../components/BackgroundFX";
 import pageStyles from "./page.module.css";
 import styles from "../components/BackgroundFX.module.css";
@@ -16,11 +17,24 @@ export default function Home() {
         enableVignette
         enableWobbleY
       >
+        {/* Top nav (pinned, same spot on all pages) */}
+        <nav className={styles.internalLinks} aria-label="Site">
+          <Link href="/" className={styles.rgbGlitchLink}>
+            Home
+          </Link>
+          <Link href="/about" className={styles.rgbGlitchLink}>
+            About
+          </Link>
+          <Link href="/projects" className={styles.rgbGlitchLink}>
+            Projects
+          </Link>
+        </nav>
+
         {/* Title */}
         <h1 className={`${styles.centerText} ${styles.rgbGlitch}`}>Ezekiel</h1>
 
-        {/* Social icons with RGB glow */}
-        <div className={styles.socialLinks}>
+        {/* Social icons */}
+        <div className={styles.socialLinks} aria-label="Social">
           <a
             href="https://github.com/EzekielBrown"
             target="_blank"
