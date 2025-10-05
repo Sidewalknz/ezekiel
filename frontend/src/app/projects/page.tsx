@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import BackgroundFX from "../../components/BackgroundFX";
 import pageStyles from "../page.module.css";
@@ -124,6 +124,16 @@ export default function ProjectsPage() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  // --- Measure header to position the scroll region below it (works on desktop & mobile)
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const [headerH, setHeaderH] = useState<number>(0);
+  useEffect(() => {
+    const update = () => setHeaderH(headerRef.current ? headerRef.current.offsetHeight : 0);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   // Load CSV from /public/data/projects.csv
   useEffect(() => {
     let alive = true;
@@ -169,6 +179,7 @@ export default function ProjectsPage() {
         enableScanlines
         enableVignette
         enableWobbleY
+        overlayCentered={false}
       >
         {/* Pinned site nav */}
         <nav className={fxStyles.internalLinks} aria-label="Site">
@@ -183,63 +194,57 @@ export default function ProjectsPage() {
           </Link>
         </nav>
 
-        {/* Title */}
-        <h1 className={`${fxStyles.centerText} ${fxStyles.rgbGlitch}`}>Projects</h1>
+        {/* Header (title + tabs) — same pattern as About */}
+        <div ref={headerRef} className={fxStyles.aboutHeader}>
+          <h1 className={`${fxStyles.centerText} ${fxStyles.rgbGlitch}`}>Projects</h1>
 
-        {/* Tabs (same style as About) */}
-        <div className={fxStyles.tabBar} role="tablist" aria-label="Project categories">
-          {TABS.map(({ key, label }) => {
-            const active = tab === key;
-            return (
-              <button
-                key={key}
-                role="tab"
-                aria-selected={active}
-                aria-controls={`panel-${key}`}
-                id={`tab-${key}`}
-                className={`${fxStyles.rgbGlitchLink} ${fxStyles.tabLinkButton} ${
-                  active ? fxStyles.tabLinkActive : ""
-                }`}
-                onClick={() => setTab(key)}
-              >
-                {label}
-              </button>
-            );
-          })}
+          <div className={fxStyles.tabBar} role="tablist" aria-label="Project categories">
+            {TABS.map(({ key, label }) => {
+              const active = tab === key;
+              return (
+                <button
+                  key={key}
+                  role="tab"
+                  aria-selected={active}
+                  aria-controls={`panel-${key}`}
+                  id={`tab-${key}`}
+                  className={`${fxStyles.rgbGlitchLink} ${fxStyles.tabLinkButton} ${
+                    active ? fxStyles.tabLinkActive : ""
+                  }`}
+                  onClick={() => setTab(key)}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Panel with scrollable list */}
-        <section
-          id={`panel-${tab}`}
-          role="tabpanel"
-          aria-labelledby={`tab-${tab}`}
-          className={fxStyles.panel}
-        >
-          <div className={fxStyles.panelBody}>
-            {error && (
-              <p style={{ color: "#f88", marginTop: "0.5rem" }}>
-                Failed to load projects: {error}
-              </p>
-            )}
+        {/* Absolute scroll region below measured header (desktop + mobile) */}
+        <div className={fxStyles.contentScrollRegionMobile} style={{ top: headerH }}>
+          <section
+            id={`panel-${tab}`}
+            role="tabpanel"
+            aria-labelledby={`tab-${tab}`}
+            className={fxStyles.panel}
+          >
+            <div className={fxStyles.panelBody}>
+              {error && (
+                <p style={{ color: "#f88", marginTop: "0.5rem" }}>
+                  Failed to load projects: {error}
+                </p>
+              )}
 
-            {!error && projects.length === 0 && (
-              <p className={fxStyles.cardMeta}>Loading your projects…</p>
-            )}
+              {!error && projects.length === 0 && (
+                <p className={fxStyles.cardMeta}>Loading your projects…</p>
+              )}
 
-            {!error && projects.length > 0 && filtered.length === 0 && (
-              <p className={fxStyles.cardMeta}>No projects in “{tab}” yet.</p>
-            )}
+              {!error && projects.length > 0 && filtered.length === 0 && (
+                <p className={fxStyles.cardMeta}>No projects in “{tab}” yet.</p>
+              )}
 
-            {/* Scroll container */}
-            <div
-              role="list"
-              style={{
-                maxHeight: "48vh",
-                overflowY: "auto",
-                paddingRight: "0.5rem",
-                marginTop: "0.5rem",
-              }}
-            >
+              {/* Scrollable list inside the panel body is no longer necessary,
+                  since the whole region scrolls. Kept simple list markup. */}
               {filtered.map((p) => (
                 <div
                   role="listitem"
@@ -250,7 +255,6 @@ export default function ProjectsPage() {
                     borderBottom: "1px solid rgba(255,255,255,0.08)",
                   }}
                 >
-                  {/* 👇 Added rgbGlitch effect to each project name */}
                   <h2 className={fxStyles.rgbGlitch}>{p.Name}</h2>
 
                   <p className={fxStyles.cardMeta}>
@@ -311,8 +315,8 @@ export default function ProjectsPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </BackgroundFX>
     </main>
   );
