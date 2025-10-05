@@ -236,7 +236,7 @@ export default function ProjectsPage() {
               )}
 
               {!error && projects.length === 0 && (
-                <p className={fxStyles.cardMeta}>Loading your projects…</p>
+                <p className={fxStyles.cardMeta}>Loading projects…</p>
               )}
 
               {!error && projects.length > 0 && filtered.length === 0 && (
