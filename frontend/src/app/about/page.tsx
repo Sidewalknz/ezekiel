@@ -65,7 +65,7 @@ export default function AboutPage() {
           })}
         </div>
 
-        {/* Panels */}
+        {/* ABOUT */}
         <section
           id="panel-about"
           role="tabpanel"
@@ -75,17 +75,12 @@ export default function AboutPage() {
         >
           <div className={fxStyles.panelBody}>
             <p>
-              Kia ora! I’m Ezekiel! I’m currently wrapping up my master’s in
-              Artificial Intelligence at Victoria University of Wellington.
-              Based in Nelson, I’m all about technology, whether it’s diving
-              into video games or building my own mobile apps. I’m a big sports
-              fan, especially football, F1, and basketball. Lately, I’ve been
-              tinkering with Guitar Hero and Rock Band controllers, gutting the
-              internals, swapping parts, and spray painting custom faceplates.
+              Kia ora! I’m Ezekiel. I’m a recent grad from Victoria University of Wellington, where I got my Masters in Artificial Intelligence. I’m down in Nelson, and I’m basically tech-obsessed, from building out mobile apps to websites. When I need a break from the screen, I’m usually spending time with my wife and daughter or out playing sports. I’m also a huge fan of watching football, F1, and basketball. My latest obsession is hardware modding old Guitar Hero and Rock Band controllers, swapping parts, and giving them custom spray-painted faceplates.
             </p>
           </div>
         </section>
 
+        {/* EDUCATION */}
         <section
           id="panel-education"
           role="tabpanel"
@@ -96,8 +91,8 @@ export default function AboutPage() {
           <div className={fxStyles.panelBody}>
             {/* Master */}
             <div className={fxStyles.sectionBlock}>
-              <h2>Master of Artificial Intelligence</h2>
-              <p className={fxStyles.cardMeta}>2024 – Present</p>
+              <h2 className={fxStyles.rgbGlitch}>Master of Artificial Intelligence</h2>
+              <p className={fxStyles.cardMeta}>2024 – 2025</p>
               <p>
                 Currently studying at Te Herenga Waka — Victoria University of
                 Wellington, focusing on machine learning and natural language
@@ -110,20 +105,21 @@ export default function AboutPage() {
                 <span className={fxStyles.badge}>DEAP</span>
                 <span className={fxStyles.badge}>Scikit-Learn</span>
                 <span className={fxStyles.badge}>Genetic Programming</span>
+                <span className={fxStyles.badge}>Regression</span>
+                <span className={fxStyles.badge}>Classification</span>
               </p>
             </div>
 
             {/* Bachelor */}
             <div className={fxStyles.sectionBlock}>
-              <h2>Bachelor of Information Technology</h2>
+              <h2 className={fxStyles.rgbGlitch}>Bachelor of Information Technology</h2>
               <p className={fxStyles.cardMeta}>2020 – 2023</p>
               <p>
-                A 1-year diploma evolved into a three-year bachelor’s at Nelson
+                A 1 year diploma evolved into a three year bachelor’s at Nelson
                 Marlborough Institute of Technology (NMIT). I developed core
                 software, hardware, database, and web skills. I also explored CGI,
                 creating worlds and stories in Unreal Engine. My final-year
-                project predicted salmon health using AI—entirely self-guided,
-                and I topped my class for it.
+                project involved predicting salmon health using AI where this was entirely self-guided as no course prepared me for this project. I ended up topping my class for this project.
               </p>
               <p className={fxStyles.badgeRow}>
                 <span className={fxStyles.badge}>Full-Stack Web</span>
@@ -136,11 +132,10 @@ export default function AboutPage() {
 
             {/* Diploma */}
             <div className={fxStyles.sectionBlock}>
-              <h2>Diploma of Web Development</h2>
+              <h2 className={fxStyles.rgbGlitch}>Diploma of Web Development</h2>
               <p className={fxStyles.cardMeta}>2020</p>
               <p>
-                The starting point—hands-on web fundamentals that kickstarted my
-                deeper dive into software engineering and ultimately the bachelor’s.
+                This was the starting point for my information technology career as it allowed me to learn the fundamentals. However I believed that I still had a lot of learning before jumping into a career so I decided to extend my diploma into a degree.
               </p>
               <p className={fxStyles.badgeRow}>
                 <span className={fxStyles.badge}>HTML/CSS</span>
@@ -151,6 +146,7 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* WORK (fixed spacing: single panelBody + sectionBlock per job) */}
         <section
           id="panel-work"
           role="tabpanel"
@@ -160,13 +156,10 @@ export default function AboutPage() {
         >
           <div className={fxStyles.panelBody}>
             <div className={fxStyles.sectionBlock}>
-              <h2>Anything Electronic</h2>
+              <h2 className={fxStyles.rgbGlitch}>Anything Electronic</h2>
               <p className={fxStyles.cardMeta}>2018 – 2024</p>
               <p>
-                Hired as the purchasing manager, I built supplier relationships and
-                maintained inventory. I quickly took on more—surface-mount
-                technology operation and key responsibilities on the manufacturing
-                side. Also pitched in with web dev where needed.
+                I started here as the Purchasing Manager, where I built relationship with the supplier and maintained inventory. My role quickly expanded to include hands-on work where I dealt with surface-mount technology operation and key responsibilities on the manufacturing side. After I left to pursue my diploma and degree, I later returned to the company as their Web Developer, successfully developing and customising their e-commerce platform using Zencart and PHP.
               </p>
               <p className={fxStyles.badgeRow}>
                 <span className={fxStyles.badge}>Inventory Management</span>
@@ -176,23 +169,18 @@ export default function AboutPage() {
                 <span className={fxStyles.badge}>SMT Operator</span>
               </p>
             </div>
-          </div>
-                    <div className={fxStyles.panelBody}>
+
             <div className={fxStyles.sectionBlock}>
-              <h2>McDonalds</h2>
+              <h2 className={fxStyles.rgbGlitch}>McDonalds</h2>
               <p className={fxStyles.cardMeta}>2013 – 2018</p>
               <p>
-                Hired as the purchasing manager, I built supplier relationships and
-                maintained inventory. I quickly took on more—surface-mount
-                technology operation and key responsibilities on the manufacturing
-                side. Also pitched in with web dev where needed.
+                My first real job out of school where it prepared myself for the real world. Starting as crew, I quickly moved up the ranks to shift manager. Over the years, I developed strong leadership skills and manageabilty which helped me later in other jobs. I built valuable relationships with regular customers which led me to exciting opportunities and gave me the confidence to network and seek out my next big professional challenge.
               </p>
               <p className={fxStyles.badgeRow}>
-                <span className={fxStyles.badge}>Inventory Management</span>
-                <span className={fxStyles.badge}>Soldering &amp; Wiring</span>
-                <span className={fxStyles.badge}>Web Development</span>
-                <span className={fxStyles.badge}>Supplier Relations</span>
-                <span className={fxStyles.badge}>SMT Operator</span>
+                <span className={fxStyles.badge}>Shift Manager</span>
+                <span className={fxStyles.badge}>Leader</span>
+                <span className={fxStyles.badge}>Scheduling</span>
+                <span className={fxStyles.badge}>Customer Relations</span>
               </p>
             </div>
           </div>

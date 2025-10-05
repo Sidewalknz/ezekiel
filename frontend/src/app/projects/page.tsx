@@ -208,7 +208,7 @@ export default function ProjectsPage() {
           })}
         </div>
 
-        {/* Panel with a scrollable list */}
+        {/* Panel with scrollable list */}
         <section
           id={`panel-${tab}`}
           role="tabpanel"
@@ -245,9 +245,14 @@ export default function ProjectsPage() {
                   role="listitem"
                   key={`${p.Name}-${p.Date}`}
                   className={fxStyles.sectionBlock}
-                  style={{ paddingBottom: "0.75rem", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{
+                    paddingBottom: "0.75rem",
+                    borderBottom: "1px solid rgba(255,255,255,0.08)",
+                  }}
                 >
-                  <h2>{p.Name}</h2>
+                  {/* 👇 Added rgbGlitch effect to each project name */}
+                  <h2 className={fxStyles.rgbGlitch}>{p.Name}</h2>
+
                   <p className={fxStyles.cardMeta}>
                     {p.Date}
                     {p.Category ? ` · ${p.Category}` : ""}
