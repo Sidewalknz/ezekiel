@@ -231,7 +231,7 @@
 .socialLinks {
   display: flex;
   gap: 1.5rem;
-  margin-top: 1.25rem;
+  margin-top: -1rem;
   z-index: 25;
 }
 
